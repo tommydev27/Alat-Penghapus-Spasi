@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alat Penghapus Spasi</title>
+  <style>
+    /* Global styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f7fa;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: white;
+      border-radius: 10px;
+      width: 100%;
+      padding: 10px;
+      height: 650px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 200px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      margin-bottom: 0px;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 6px 5px;
+      background-color: #0b9798;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #3f51b5;
+    }
+
+  .output-box {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    max-height: 200px;
+    overflow-y: auto;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    font-family: 'Courier New', monospace;
+  }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Alat Penghapus Spasi</h1>
+  <textarea id="inputText" placeholder="Masukkan teks di sini..."></textarea>
+    <h2 style="color:#444; font-size: 12px; ">paste text di bagian atas selanjutnya klik (hapus spasi) </br>klik untuk (salin)</h2>
+
+  <div class="output-box" id="outputText"></div>
+  <div class="btn-container">
+    <button onclick="removeExtraSpaces()">Hapus Spasi</button>
+    <button onclick="trimSpaces()">Hapus Awal/Akhir</button>
+    <button onclick="resetText()">Reset</button>
+    <button onclick="copyText()">Salin</button>
+  </div>
+
+  <h2 style="color:#444; font-size: 10px;">Tommy website v0.1.0</h2>
+</div>
+
+
+<script>
+  // Fungsi untuk menghapus spasi ekstra
+  function removeExtraSpaces() {
+    const inputText = document.getElementById("inputText").value;
+    const result = inputText.replace(/\s+/g, ' ').trim();
+    document.getElementById("outputText").textContent = result;
+  }
+
+  // Fungsi untuk menghapus spasi di awal/akhir
+  function trimSpaces() {
+    const inputText = document.getElementById("inputText").value;
+    const result = inputText.trim();
+    document.getElementById("outputText").textContent = result;
+  }
+
+  // Fungsi untuk mereset teks
+  function resetText() {
+    document.getElementById("inputText").value = '';
+    document.getElementById("outputText").textContent = '';
+  }
+
+  // Fungsi untuk menyalin hasil
+  function copyText() {
+    const outputText = document.getElementById("outputText").textContent;
+    if (outputText) {
+      navigator.clipboard.writeText(outputText).then(() => {
+        alert("Teks berhasil disalin!");
+      });
+    } else {
+      alert("Tidak ada teks untuk disalin.");
+    }
+  }
+</script>
+
+</body>
+</html>
