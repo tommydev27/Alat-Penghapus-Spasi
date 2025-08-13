@@ -172,19 +172,7 @@ function removeExtraSpaces() {
     document.getElementById("outputText").textContent = '';
   }
 
-  // Fungsi untuk menyalin hasil
-  function copyText() {
-    const outputText = document.getElementById("outputText").textContent;
-    if (outputText) {
-      navigator.clipboard.writeText(outputText).then(() => {
-        alert("Teks berhasil disalin!");
-      });
-    } else {
-      alert("Tidak ada teks untuk disalin.");
-    }
-  }
-</script>
-<script>
+
   function copyText() {
     const outputText = document.getElementById("outputText").textContent;
     const status = document.getElementById("copyStatus");
