@@ -8,7 +8,7 @@
     /* Global styling */
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #f4f7fa;
+      background-color: #333;
       margin: 0;
       display: flex;
       width: 100%;
@@ -17,7 +17,7 @@
     }
 
     .container {
-      background: white;
+      background: #333;
       border-radius: 10px;
       width: 100%;
       max-width: 600px; /* tambahkan ini */
@@ -29,7 +29,7 @@
     h1 {
       text-align: left;
       margin-left: 0px;
-      color: #333;
+      color: #fff;
       font-size: 20px;
     }
 
@@ -37,9 +37,11 @@
       width: 100%;
       height: 200px;
       padding: 10px;
+      background: #444;
+      color: #fff;
       font-size: 16px;
       border-radius: 4px;
-      border: 1px solid #ddd;
+      border: 1px solid #777;
       margin-bottom: 0px;
       resize: vertical;
       box-sizing: border-box;
@@ -53,12 +55,12 @@
 
     button {
       padding: 6px 5px;
-      background-color: #0b9798;
+      background-color: #880404;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 15px;
+      font-size: 12px;
       transition: background-color 0.3s;
     }
 
@@ -68,9 +70,10 @@
 
     .output-box {
       padding: 10px;
-      border: 1px solid #ddd;
+      border: 1px solid #777;
       border-radius: 8px;
-      background-color: #f9f9f9;
+      background-color: #444;
+      color: #fff;
       max-height: 100px;
       overflow-y: auto;
       word-wrap: break-word;
@@ -123,19 +126,26 @@
       align-items: center;
       gap: 6px;
       font-size: 16px;
-      color: #333;
+      color: #fff;
       margin-top: 8px;
       margin-bottom: 8px;
     }
+    header{padding:5px 0px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:center; font-family:Normal; margin-bottom: 0px;}
+    header h1{font-size:16px;margin:0;font-weight:700; color:#fff; }
+    header .badge{font-size:11px;color:#02c302; background:#0a0a0a;border:1px solid #123a18;padding:2px 6px;border-radius:999px}
 </style>
 
 </head>
 <body>
 
 <div class="container">
-  <h1>Alat Penghapus Spasi</h1>
+  <h1></h1>
+       <header>
+    <h1>Alat</h1>
+    <span class="badge">Alat Penghapus Spasi</span>
+  </header>
   <textarea id="inputText" placeholder="Masukkan teks di sini..."></textarea>
-    <h2 style="color:#444; font-size: 12px; ">paste text di bagian atas selanjutnya klik (hapus spasi) </br>klik untuk (salin)</h2>
+    <h2 style="color:#fff; font-size: 12px; ">paste text di bagian atas selanjutnya klik (hapus spasi) </br>klik untuk (salin)</h2>
 <div id="copyStatus" class="copy-status" style="display:none;"></div>
 
   <div class="output-box" id="outputText"></div>
@@ -146,7 +156,7 @@
     <button onclick="copyText()">Salin</button>
   </div>
 
-  <h2 style="color:#444; font-size: 10px;">Tommy website v0.1.0</h2>
+  <h2 style="color:#00e72c; font-size: 10px;">Tommy website v0.1.0</h2>
 </div>
 
 
