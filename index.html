@@ -115,7 +115,7 @@
     .copy-status {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 0px;
       font-size: 16px;
       color: #fff;
       margin-top: 8px;
@@ -131,18 +131,21 @@
 
 <div class="container">
        <header>
-    <h1 style="color: #333;">Alat Penghapus Spasi</h1>
+    <h1 style="color: #333;">Penghapus Spasi</h1>
     <span class="badge">Penghapus Spasi</span>
   </header>
   <textarea id="inputText" placeholder="Masukkan teks di sini..."></textarea>
-    <h2 style=" font-size: 15px; ">paste text di bagian atas selanjutnya klik (hapus spasi) </br>klik untuk (salin)</h2>
+    <p style=" font-size: 15px; ">Paste text di bagian atas selanjutnya klik (hapus spasi) klik untuk (salin)</p>
+    
+    <b style="color: #333;">Hasil teks muncul disini</b>
 <div id="copyStatus" class="copy-status" style="display:none;"></div>
 
   <div class="output-box" id="outputText"></div>
   <div class="btn-container">
     <button onclick="removeExtraSpaces()">Hapus Spasi</button>
-    <button onclick="trimSpaces()">Hapus Awal/Akhir</button>
-    <button onclick="resetText()">Reset</button>
+    <button onclick="addSpaces()">+ Spasi</button>
+    <button onclick="trimSpaces()">hapus Awal/Akhir</button>
+    <button onclick="resetText()">©</button>
     <button onclick="copyText()" style="background: green">Salin</button>
   </div>
     <p style="font-size: 15px; ">Bagian alat ini menyatukan barisan tampa spasi bisa di gunakanuntuk menyatukan script atau elemen lain seperti elemen hasil coding agar sulit terbaca sulit </p>
@@ -150,39 +153,38 @@
 
 
 <script>
-  // Fungsi untuk menghapus spasi ekstra
-function removeExtraSpaces() {
-  const inputText = document.getElementById("inputText").value;
-  const result = inputText.replace(/\s+/g, '');
-  document.getElementById("outputText").textContent = result;
-}
+  function removeExtraSpaces() {
+    const inputText = document.getElementById("inputText").value;
+    const result = inputText.replace(/\s+/g, '');
+    document.getElementById("outputText").textContent = result;
+  }
 
-
-  // Fungsi untuk menghapus spasi di awal/akhir
   function trimSpaces() {
     const inputText = document.getElementById("inputText").value;
     const result = inputText.trim();
     document.getElementById("outputText").textContent = result;
   }
 
-  // Fungsi untuk mereset teks
+  function addSpaces() {
+    const inputText = document.getElementById("inputText").value;
+    // Tambah spasi antar karakter (bukan kata)
+    const result = inputText.split('').join(' ');
+    document.getElementById("outputText").textContent = result;
+  }
+
   function resetText() {
     document.getElementById("inputText").value = '';
     document.getElementById("outputText").textContent = '';
   }
 
-
   function copyText() {
     const outputText = document.getElementById("outputText").textContent;
     const status = document.getElementById("copyStatus");
-
     if (outputText) {
       navigator.clipboard.writeText(outputText).then(() => {
         status.innerHTML = '<span class="checkmark"></span> Berhasil disalin!';
         status.style.display = "flex";
-        setTimeout(() => {
-          status.style.display = "none";
-        }, 2000);
+        setTimeout(() => { status.style.display = "none"; }, 2000);
       });
     } else {
       alert("Tidak ada teks untuk disalin.");
