@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alat Penghapus Spasi</title>
   <style>
-    /* Global styling */
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       background: #f6f7f8;
       margin: 10px;
       display: flex;
@@ -16,16 +15,14 @@
       justify-content: center;
       align-items: center;
     }
-
     .container {
       background: #fff;
       border-radius: 10px;
       width: 100%;
       padding: 10px;
       min-height: 100vh;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    
     textarea {
       width: 100%;
       height: 200px;
@@ -33,18 +30,16 @@
       background: #fff;
       font-size: 16px;
       border-radius: 4px;
-      border: 1px solid  #ccc;;
-      margin-bottom: 0px;
+      border: 1px solid #ccc;
+      margin-bottom: 0;
       resize: vertical;
       box-sizing: border-box;
     }
-
     .btn-container {
       display: flex;
       justify-content: space-between;
       margin-top: 10px;
     }
-
     button {
       padding: 6px 5px;
       background-color: #880404;
@@ -55,29 +50,18 @@
       font-size: 12px;
       transition: background-color 0.3s;
     }
-
-    button:hover {
-      background-color: #03696a;
-    }
-
+    button:hover { background-color: #03696a; }
     .output-box {
       padding: 10px;
-      border: 1px solid  #ccc;
+      border: 1px solid #ccc;
       border-radius: 8px;
       background-color: #fff;
       max-height: 100px;
       overflow-y: auto;
-      word-wrap: break-word;
       white-space: pre-wrap;
       font-family: 'Courier New', monospace;
-      overflow-wrap: break-word; 
-      word-break: break-word; 
+      color: #000;
     }
-    .output-box {
-      min-height: 20px;
-    }
-
-    /* Animasi centang */
     .checkmark {
       width: 18px;
       height: 18px;
@@ -87,7 +71,6 @@
       position: relative;
       animation: pop 0.3s ease-out;
     }
-  
     .checkmark::after {
       content: '';
       position: absolute;
@@ -100,96 +83,92 @@
       transform: rotate(45deg);
       animation: draw 0.4s ease forwards;
     }
-  
-    @keyframes pop {
-      0% { transform: scale(0); }
-      80% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-  
-    @keyframes draw {
-      0% { height: 0; width: 0; }
-      100% { height: 10px; width: 5px; }
-    }
-  
+    @keyframes pop {0%{transform:scale(0);}80%{transform:scale(1.1);}100%{transform:scale(1);}}
+    @keyframes draw {0%{height:0;width:0;}100%{height:10px;width:5px;}}
     .copy-status {
       display: flex;
       align-items: center;
-      gap: 0px;
+      gap: 0;
       font-size: 16px;
       color: #fff;
       margin-top: 8px;
       margin-bottom: 8px;
     }
-    header {padding:5px 0px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:center; font-family:Normal; margin-bottom: 10px;}
-    header h1{font-size:16px;margin:0;font-weight:700; color:#fff; }
-    header .badge{font-size:11px;color:#02c302; background:#0a0a0a;border:1px solid #123a18;padding:2px 6px;border-radius:999px}
-</style>
-
+    header {
+      padding:5px 0;border-bottom:1px solid var(--border);
+      display:flex;gap:10px;align-items:center;
+      font-family:Normal;margin-bottom:10px;
+    }
+    header h1 {font-size:16px;margin:0;font-weight:700;color:#333;}
+    header .badge {
+      font-size:11px;color:#02c302;background:#0a0a0a;
+      border:1px solid #123a18;padding:2px 6px;border-radius:999px;
+    }
+  </style>
 </head>
 <body>
 
 <div class="container">
-       <header>
-    <h1 style="color: #333;">Penghapus Spasi</h1>
+  <header>
+    <h1>Penghapus Spasi</h1>
     <span class="badge">Penghapus Spasi</span>
   </header>
-  <textarea id="inputText" placeholder="Masukkan teks di sini..."></textarea>
-    <p style=" font-size: 15px; ">Paste text di bagian atas selanjutnya klik (hapus spasi) klik untuk (salin)</p>
-    
-    <b style="color: #333;">Hasil teks muncul disini</b>
-<div id="copyStatus" class="copy-status" style="display:none;"></div>
 
+  <textarea id="inputText" placeholder="Masukkan teks di sini..."></textarea>
+  <p style="font-size:15px;">Paste text di bagian atas lalu klik (hapus spasi) atau (salin)</p>
+  <b style="color:#333;">Hasil teks muncul di sini</b>
+  <div id="copyStatus" class="copy-status" style="display:none;"></div>
   <div class="output-box" id="outputText"></div>
+
   <div class="btn-container">
     <button onclick="removeExtraSpaces()">Hapus Spasi</button>
     <button onclick="addSpaces()">+ Spasi</button>
-    <button onclick="trimSpaces()">hapus Awal/Akhir</button>
+    <button onclick="trimSpaces()">Hapus Awal/Akhir</button>
     <button onclick="resetText()">©</button>
-    <button onclick="copyText()" style="background: green">Salin</button>
+    <button onclick="copyText()" style="background:green">Salin</button>
   </div>
-    <p style="font-size: 15px; ">Bagian alat ini menyatukan barisan tampa spasi bisa di gunakanuntuk menyatukan script atau elemen lain seperti elemen hasil coding agar sulit terbaca sulit </p>
+
+  <p style="font-size:15px;">Bagian alat ini menyatukan barisan tanpa spasi, cocok untuk menyatukan script atau elemen lain agar sulit dibaca.</p>
 </div>
 
-
 <script>
-  function removeExtraSpaces() {
-    const inputText = document.getElementById("inputText").value;
-    const result = inputText.replace(/\s+/g, '');
-    document.getElementById("outputText").textContent = result;
-  }
+function removeExtraSpaces() {
+  const inputText = document.getElementById("inputText").value;
+  const result = inputText.replace(/\s+/g, '');
+  document.getElementById("outputText").innerText = result;
+}
 
-  function trimSpaces() {
-    const inputText = document.getElementById("inputText").value;
-    const result = inputText.trim();
-    document.getElementById("outputText").textContent = result;
-  }
+function trimSpaces() {
+  const inputText = document.getElementById("inputText").value;
+  const result = inputText.trim();
+  document.getElementById("outputText").innerText = result;
+}
 
-  function addSpaces() {
-    const inputText = document.getElementById("inputText").value;
-    // Tambah spasi antar karakter (bukan kata)
-    const result = inputText.split('').join(' ');
-    document.getElementById("outputText").textContent = result;
-  }
+function addSpaces() {
+  const inputText = document.getElementById("inputText").value;
+  const result = Array.from(inputText.matchAll(/./gu), m => m[0]).join(' ');
+  document.getElementById("outputText").textContent = result;
+}
 
-  function resetText() {
-    document.getElementById("inputText").value = '';
-    document.getElementById("outputText").textContent = '';
-  }
 
-  function copyText() {
-    const outputText = document.getElementById("outputText").textContent;
-    const status = document.getElementById("copyStatus");
-    if (outputText) {
-      navigator.clipboard.writeText(outputText).then(() => {
-        status.innerHTML = '<span class="checkmark"></span> Berhasil disalin!';
-        status.style.display = "flex";
-        setTimeout(() => { status.style.display = "none"; }, 2000);
-      });
-    } else {
-      alert("Tidak ada teks untuk disalin.");
-    }
+function resetText() {
+  document.getElementById("inputText").value = '';
+  document.getElementById("outputText").innerText = '';
+}
+
+function copyText() {
+  const outputText = document.getElementById("outputText").innerText;
+  const status = document.getElementById("copyStatus");
+  if (outputText) {
+    navigator.clipboard.writeText(outputText).then(() => {
+      status.innerHTML = '<span class="checkmark"></span> Berhasil disalin!';
+      status.style.display = "flex";
+      setTimeout(() => { status.style.display = "none"; }, 2000);
+    });
+  } else {
+    alert("Tidak ada teks untuk disalin.");
   }
+}
 </script>
 
 </body>
